@@ -9,8 +9,6 @@ use StudioBosco\LoginAsUser\Classes\UserExtender;
  */
 class Plugin extends PluginBase
 {
-    public $require = ['RainLab.User'];
-
     /**
      * Returns information about this plugin.
      *
@@ -20,7 +18,7 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'Login As User',
-            'description' => 'Logs you in as a certain frontend user.',
+            'description' => 'Logs you in as a certain frontend or backend user.',
             'author'      => 'Studio Bosco',
             'icon'        => 'icon-user',
             'homepage'    => 'https://github.com/studiobosco/octobercms-loginasuser'
@@ -65,10 +63,14 @@ class Plugin extends PluginBase
     public function registerPermissions()
     {
         return [
-            'studiobosco.loginasuser.login' => [
+            'studiobosco.loginasuser::login' => [
                 'tab'   => 'rainlab.user::lang.plugin.tab',
                 'label' => 'studiobosco.loginasuser::lang.plugin.login',
-            ]
+            ],
+            'studiobosco.loginasuser::backend_login' => [
+                'tab'   => 'system::lang.permissions.name',
+                'label' => 'studiobosco.loginasuser::lang.plugin.backend_login',
+            ],
         ];
     }
 
