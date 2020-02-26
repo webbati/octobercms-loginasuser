@@ -44,8 +44,8 @@ class UserExtender
             $user = BackendAuth::getUser();
 
             if (
-                !$user->hasAccess('studiobosco.loginasuser::backend_login') &&
-                $user->id !== $model->id
+                !$user->hasAccess('studiobosco.loginasuser::backend_login') ||
+                $user->id === $model->id
             ) {
                 return;
             }
